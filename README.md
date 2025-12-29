@@ -29,7 +29,7 @@ Using monthly electricity consumption data from the Department of Statistics Mal
 ## Analysis & Results
 
 ### 1️⃣ Raw Time Series: Trend & Seasonality
-![Raw Time Series](outputs/raw_timeseries.png)
+![Raw Time Series](output/raw_timeseries.png)
 
 The series shows a strong upward trend, indicating increasing electricity demand over time.  
 Clear recurring seasonal patterns are observed, confirming the need for seasonal time series models.
@@ -37,7 +37,7 @@ Clear recurring seasonal patterns are observed, confirming the need for seasonal
 ---
 
 ### 2️⃣ Additive Decomposition
-![Additive Decomposition](outputs/additive_decomposition.png)
+![Additive Decomposition](output/additive_decomposition.png)
 
 The additive model separates the data into trend, seasonal, and remainder components.  
 Seasonal effects appear relatively constant over time, which is suitable when seasonal variation does not grow with demand.
@@ -45,7 +45,7 @@ Seasonal effects appear relatively constant over time, which is suitable when se
 ---
 
 ### 3️⃣ Multiplicative Decomposition
-![Multiplicative Decomposition](outputs/multiplicative_decomposition.png)
+![Multiplicative Decomposition](output/multiplicative_decomposition.png)
 
 The multiplicative model shows seasonal effects increasing proportionally with the level of the series.  
 This behaviour reflects real electricity usage patterns more accurately, as higher demand leads to larger seasonal fluctuations.
@@ -53,7 +53,7 @@ This behaviour reflects real electricity usage patterns more accurately, as high
 ---
 
 ### 4️⃣ Additive Forecast (12 Months)
-![Additive Forecast](outputs/additive_forecast.png)
+![Additive Forecast](output/additive_forecast.png)
 
 The additive forecast projects steady growth with constant seasonal effects.  
 However, it may underestimate variability as overall demand increases.
@@ -61,20 +61,39 @@ However, it may underestimate variability as overall demand increases.
 ---
 
 ### 5️⃣ Multiplicative Forecast (12 Months)
-![Multiplicative Forecast](outputs/multiplicative_forecast.png)
+![Multiplicative Forecast](output/multiplicative_forecast.png)
 
 The multiplicative forecast captures both rising demand and expanding seasonal variation, producing a more realistic representation of future electricity consumption.
 
 ---
 
-## Model Evaluation
+##  Model Evaluation
 
-Both models were evaluated using MAE, RMSE, and MAPE.  
-All models achieved **MAPE < 5%**, indicating strong forecasting performance.
+### 🔢 Additive Model – Forecast Accuracy
+![Additive Accuracy](output/additive_accuracy.png)
 
-Despite the additive model having slightly lower numerical errors, the multiplicative model better represented the increasing seasonal variability observed in the data.
+The additive model was evaluated using the following metrics:
 
-### Final Model Selection: **Multiplicative Seasonal Model**
+- **MAE** (Mean Absolute Error)  
+- **RMSE** (Root Mean Squared Error)  
+- **MAPE** (Mean Absolute Percentage Error)
+
+The results indicate strong predictive performance, with low error values and **MAPE below 5%**, demonstrating reliable short-term forecasting.
+
+---
+
+### 🔢 Multiplicative Model – Forecast Accuracy
+![Multiplicative Accuracy](output/multiplicative_accuracy.png)
+
+The multiplicative model was evaluated using the same accuracy metrics.  
+Although its numerical error values are slightly higher than the additive model, it better captures the increasing seasonal variability observed in the data.
+
+---
+
+###  Final Model Selection
+
+While the additive model shows marginally lower error values, the **multiplicative seasonal model** was selected as the final model because it more accurately represents the real-world behavior of electricity consumption, where seasonal fluctuations grow with increasing demand.
+
 
 ---
 
